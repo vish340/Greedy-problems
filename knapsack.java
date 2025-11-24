@@ -11,7 +11,7 @@ class Item {
     }
 }
 
-public class Solution {
+public class knapsack{
     public static double fractionalKnapsack(int[] val, int[] wt, int capacity) {
         int n = val.length;
         List<Item> items = new ArrayList<>();
