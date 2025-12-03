@@ -1,0 +1,28 @@
+import java.util.PriorityQueue;
+
+class Main {
+    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int i = 0; i < heights.length - 1; i++) {
+
+            int diff = heights[i + 1] - heights[i];
+
+            if (diff > 0) {
+                minHeap.add(diff);
+
+                // If heap size > ladders → use bricks on the smallest climb
+                if (minHeap.size() > ladders) {
+                    bricks -= minHeap.poll();
+                }
+
+                // If bricks become negative → stop here
+                if (bricks < 0) {
+                    return i;
+                }
+            }
+        }
+
+        return heights.length - 1;
+    }
+}
